@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Subjiwala</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="topbar">
+        <div>
+          <div class="brand">🌿 Online Subjiwala</div>
+          <div class="small">Fresh from farm to your door</div>
+        </div>
+        <div style="display:flex; gap:8px; align-items:center; flex-wrap: wrap;">
+          <button class="pill" onclick="showCustomer()">Customer View</button>
+          <button class="pill" onclick="showLogin()">Login</button>
+        </div>
+      </header>
+
+      <section id="loginScreen" class="login-screen">
+        <div class="login-card">
+          <h2 style="margin-top:0;">Welcome back</h2>
+          <p class="small">Login to enter the website. Use admin login for admin access.</p>
+          <div class="form">
+            <label>Username</label>
+            <input id="loginUser" placeholder="Enter username" />
+            <label>Password</label>
+            <input id="loginPass" type="password" placeholder="Enter password" />
+            <button class="btn" onclick="handleLogin()">Login</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="customerView" class="hidden">
+        <div class="hero">
+          <div>
+            <h1>Fresh vegetables, fast delivery, fair prices.</h1>
+            <p>Shop tomatoes, spinach, carrots, onions and more from local farms with same-day delivery.</p>
+            <button class="btn" onclick="scrollToProducts()">Shop Now</button>
+          </div>
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=600&fit=crop" alt="Fresh vegetables" />
+        </div>
+
+        <div class="grid">
+          <div>
+            <h2 style="margin-bottom:8px;">Today’s Fresh Picks</h2>
+            <div id="productGrid" class="products"></div>
+          </div>
+          <div>
+            <div class="cart-card">
+              <h3>Your Cart</h3>
+              <div id="cartItems"></div>
+              <div style="margin-top: 12px; font-weight: 700;">Total: ₹<span id="cartTotal">0</span></div>
+              <button id="checkoutBtn" class="btn" style="display:none; margin-top:12px;" onclick="checkout()">Buy Now</button>
+            </div>
+
+            <div class="transaction-card">
+              <h3>Recent Transactions</h3>
+              <div id="transactionList" class="transaction-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="adminView" class="hidden">
+        <div class="card" style="margin-top:16px;">
+          <h2 style="margin:0 0 8px;">Admin Control Center</h2>
+          <p class="small">Manage price, MRP, image and badge for each product. Changes update the customer view instantly.</p>
+          <div class="stats">
+            <div class="stat"><div class="label">Total Revenue</div><div class="value" id="rev1">₹0</div></div>
+            <div class="stat"><div class="label">Today’s Revenue</div><div class="value" id="rev2">₹0</div></div>
+            <div class="stat"><div class="label">Orders</div><div class="value" id="rev3">0</div></div>
+            <div class="stat"><div class="label">Active Customers</div><div class="value" id="rev4">0</div></div>
+          </div>
+          <div class="admin-grid" id="adminProducts"></div>
+        </div>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        renderProducts();
+        renderCart();
+        renderTransactions();
+        showLogin();
+      });
+    </script>
+  </body>
+</html>
